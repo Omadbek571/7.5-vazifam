@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-function Card({ updateProductQuantity }) {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
+function Card() {
+  const [products, setProducts] = useState(() => {
     const storedProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-    setProducts(storedProducts);
-  }, []);
+    return storedProducts;
+  });
 
   useEffect(() => {
     localStorage.setItem('cartProducts', JSON.stringify(products));
